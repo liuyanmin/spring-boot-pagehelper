@@ -36,7 +36,10 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.lym.demo.mapper"
                              targetProject="src/main/java"/>
         <!--表名-->
-        <table tableName="country">
+        <!--<table tableName="country">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <table tableName="menu">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
