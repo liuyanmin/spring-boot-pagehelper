@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8084
 pagehelper:
   helper-dialect: mysql
   reasonable: true
@@ -12,4 +12,7 @@ spring:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
 
+# swagger 配置，true 开启API接口文档， false 关闭
+swagger:
+  enable: true
 
