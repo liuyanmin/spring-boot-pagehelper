@@ -21,4 +21,10 @@ public class MenuDao {
         MenuExample example = new MenuExample();
         return menuMapper.selectByExample(example);
     }
+
+    public List<Menu> getByMenuIds(List<String> menuIds) {
+        MenuExample example = new MenuExample();
+        example.or().andIdIn(menuIds);
+        return menuMapper.selectByExample(example);
+    }
 }

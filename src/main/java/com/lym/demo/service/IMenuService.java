@@ -5,5 +5,16 @@ package com.lym.demo.service;
  */
 public interface IMenuService {
 
+    /**
+     * 获取所有菜单树
+     * @return
+     */
     Object getList();
+
+    /**
+     * 获取用户具有的菜单树
+     * @return
+     */
+    Object getUserMenuList();
+
 }

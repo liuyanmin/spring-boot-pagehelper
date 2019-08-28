@@ -20,4 +20,9 @@ public class MenuController {
     public Object getList() {
         return menuService.getList();
     }
+
+    @GetMapping("/permission")
+    public Object getMenuPermission() {
+        return menuService.getUserMenuList();
+    }
 }
