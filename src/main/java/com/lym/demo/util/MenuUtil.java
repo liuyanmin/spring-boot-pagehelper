@@ -44,14 +44,14 @@ public class MenuUtil {
      *
      * @param id
      *            当前菜单id
-     * @param rootMenu
+     * @param menuList
      *            要查找的列表
      * @return
      */
-    private static List<Menu> getChild(String id, List<Menu> rootMenu) {
+    private static List<Menu> getChild(String id, List<Menu> menuList) {
         // 子菜单
         List<Menu> childList = new ArrayList<>();
-        for (Menu menu : rootMenu) {
+        for (Menu menu : menuList) {
             // 遍历所有节点，将父菜单id与传过来的id比较
             if (!StringUtils.isEmpty(menu.getParentId())) {
                 if (menu.getParentId().equals(id)) {
@@ -62,7 +62,7 @@ public class MenuUtil {
         // 把子菜单的子菜单再循环一遍
         for (Menu menu : childList) {// 没有url子菜单还有子菜单
             // 递归
-            menu.setChildMenus(getChild(menu.getId(), rootMenu));
+            menu.setChildMenus(getChild(menu.getId(), menuList));
         }
         // 递归退出条件
         if (childList.size() == 0) {
