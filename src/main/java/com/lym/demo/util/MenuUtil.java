@@ -36,7 +36,13 @@ public class MenuUtil {
             menuMap.put(root.getId(), root);
         }
 
-        return (List<Menu>) menuMap.values();
+        List<Menu> resultList = new ArrayList<>();
+        for (String key : menuMap.keySet()) {
+            Menu menu = menuMap.get(key);
+            resultList.add(menu);
+        }
+
+        return resultList;
     }
 
     /**
@@ -49,13 +55,16 @@ public class MenuUtil {
     private static Menu menuTreeR(List<Menu> menuList, Menu root, Menu currMenu) {
         for (int i = 0; i < menuList.size(); i++) {
             Menu menu = menuList.get(i);
-            if (StringUtils.isEmpty(menu.getParentId()) && menu.getParentId().equals(root.getId())) {
-                List<Menu> children = root.getChildMenus();
-                if (children == null) {
-                    children = new ArrayList<>();
+            if (!StringUtils.isEmpty(menu.getParentId()) && menu.getParentId().equals(root.getId())) {
+                // 只有是目标节点或者中间节点（非最后一级菜单，没有URL）才作为子节点添加
+                if (menu.getId().equals(currMenu.getId()) || StringUtils.isEmpty(menu.getUrl())) {
+                    List<Menu> children = root.getChildMenus();
+                    if (children == null) {
+                        children = new ArrayList<>();
+                    }
+                    children.add(menu);
+                    root.setChildMenus(children);
                 }
-                children.add(menu);
-                root.setChildMenus(children);
 
                 if (menu.getId().equals(currMenu.getId())) {
                     return root;
