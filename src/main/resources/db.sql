@@ -202,3 +202,25 @@ INSERT INTO `country` VALUES (183,'Zambia','ZM');
 -- 城市信息
 INSERT INTO `city` VALUES ('1', '哈尔滨', '黑龙江');
 INSERT INTO `city` VALUES ('2', '牡丹江', '黑龙江');
+
+
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu` (
+  `id` varchar(32) NOT NULL COMMENT '主键id,uuid32位',
+  `name` varchar(64) NOT NULL COMMENT '登录用户名',
+  `parent_id` varchar(32) DEFAULT NULL COMMENT '父菜单id',
+  `url` varchar(64) DEFAULT NULL COMMENT '访问地址',
+  `icon` varchar(32) DEFAULT NULL COMMENT '菜单图标',
+  `order` tinyint(4) DEFAULT '0' COMMENT '菜单顺序',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='菜单表';
+
+-- 菜单信息
+INSERT INTO `menu` VALUES ('1', 'Forms', null, 'forms.html', 'fa fa-edit', '0');
+INSERT INTO `menu` VALUES ('2', 'UI Elements', null, '', 'fa fa-wrench', '1');
+INSERT INTO `menu` VALUES ('3', 'Buttons', '2', 'buttons.html', '', '0');
+INSERT INTO `menu` VALUES ('4', 'Icons', '2', 'icons.html', null, '1');
+INSERT INTO `menu` VALUES ('5', 'Multi-Level Dropdown', '', '', 'fa fa-sitemap', '2');
+INSERT INTO `menu` VALUES ('6', 'Second Level Item', '5', 'second.html', null, '0');
+INSERT INTO `menu` VALUES ('7', 'Third Level', '5', null, '', '1');
+INSERT INTO `menu` VALUES ('8', 'Third Level Item', '7', 'third.html', null, '0');
